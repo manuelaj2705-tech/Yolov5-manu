@@ -21,7 +21,7 @@ def load_model():
         st.error(f"❌ Error al cargar el modelo: {str(e)}")
         return None
 
-st.title(" 📷 Detección de Objetos en Imágenes 📷")
+st.title(" 📸 Detección de Objetos en Imágenes 📸")
 st.markdown("Esta aplicación utiliza un modelo entrenado en Teachable Machine para detectar personas y objetos en imágenes capturadas con tu cámara, mostrando en tiempo real la probabilidad de cada detección.")
 
 with st.spinner("Cargando modelo YOLOv5..."):
