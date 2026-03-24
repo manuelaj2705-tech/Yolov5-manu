@@ -11,14 +11,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# ─── Estilos personalizados ───────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
 /* Base */
 html, body, [class*="css"] {
-    font-family: 'DM Sans', sans-serif;
+    font-family: sans-serif;
 }
 
 /* Fondo general */
@@ -29,27 +26,22 @@ html, body, [class*="css"] {
 
 /* Título principal */
 h1 {
-    font-family: 'Space Mono', monospace !important;
-    font-size: 2.1rem !important;
-    font-weight: 700 !important;
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
     color: #ffffff !important;
     text-align: center !important;
-    letter-spacing: -0.5px !important;
     margin-bottom: 0.3rem !important;
 }
 
 /* Subtítulos */
 h2, h3 {
-    font-family: 'Space Mono', monospace !important;
     font-weight: 700 !important;
     color: #c8caff !important;
-    letter-spacing: -0.3px !important;
 }
 
 /* Párrafos y markdown */
 p, .stMarkdown p {
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     color: #9da3b4 !important;
     text-align: center;
     font-size: 1rem !important;
@@ -65,7 +57,6 @@ section[data-testid="stSidebar"] h1,
 section[data-testid="stSidebar"] h2,
 section[data-testid="stSidebar"] h3 {
     color: #c8caff !important;
-    font-family: 'Space Mono', monospace !important;
     font-size: 1rem !important;
 }
 section[data-testid="stSidebar"] p,
@@ -73,7 +64,6 @@ section[data-testid="stSidebar"] label,
 section[data-testid="stSidebar"] .stSlider label,
 section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
     color: #9da3b4 !important;
-    font-family: 'DM Sans', sans-serif !important;
     text-align: left !important;
 }
 
@@ -88,7 +78,6 @@ section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
     color: white !important;
     border: none !important;
     border-radius: 8px !important;
-    font-family: 'DM Sans', sans-serif !important;
     font-weight: 500 !important;
     padding: 0.5rem 1.4rem !important;
     transition: background 0.2s ease !important;
@@ -99,7 +88,6 @@ section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
 
 /* Label del camera input */
 [data-testid="stCameraInput"] label {
-    font-family: 'DM Sans', sans-serif !important;
     color: #9da3b4 !important;
     font-size: 0.95rem !important;
     text-align: center !important;
@@ -116,10 +104,8 @@ section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
 /* Info / error / caption */
 .stAlert {
     border-radius: 10px !important;
-    font-family: 'DM Sans', sans-serif !important;
 }
 .stCaption, caption {
-    font-family: 'Space Mono', monospace !important;
     color: #555a72 !important;
     font-size: 0.78rem !important;
     text-align: center !important;
@@ -181,7 +167,7 @@ if model:
     if picture:
         bytes_data = picture.getvalue()
         pil_img = Image.open(io.BytesIO(bytes_data)).convert("RGB")
-        np_img  = np.array(pil_img)[..., ::-1]  # RGB → BGR para que YOLO procese bien
+        np_img  = np.array(pil_img)[..., ::-1]
 
         with st.spinner("Detectando objetos..."):
             try:
@@ -197,8 +183,8 @@ if model:
 
         result    = results[0]
         boxes     = result.boxes
-        annotated = result.plot()              # devuelve BGR numpy array
-        annotated_rgb = annotated[:, :, ::-1]  # BGR → RGB sin cv2
+        annotated = result.plot()
+        annotated_rgb = annotated[:, :, ::-1]
 
         col1, col2 = st.columns(2)
         with col1:
