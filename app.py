@@ -26,7 +26,7 @@ html, body, [class*="css"] {
 
 /* Título principal */
 h1 {
-    font-size: 3.5rem !important;
+    font-size: 2rem !important;
     font-weight: 800 !important;
     color: #ffffff !important;
     text-align: center !important;
